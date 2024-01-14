@@ -1,0 +1,54 @@
+﻿@page
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> signInManager
+@model Bloggie.Web.Pages.CampRegistrationModel
+@{
+}
+<div class="bg-secondary bg-opacity-10 py-2 mb-5">
+    <div class="container">
+        <h1>Register for the next camp edition</h1>
+    </div>
+</div>
+<div class="card text-center">
+    <div class="card-header">
+        2024
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">English Summer Camp</h5>
+        <p class="card-text">Cost: 1500$</p>
+        <a href="#" class="btn btn-primary">Register</a>
+    </div>
+    <div class="card-footer text-body-secondary">
+       Can't wait to see you!!!
+    </div>
+</div>
+<div>
+    <div class="container">
+        <form method="post">
+            @if (signInManager.IsSignedIn(User) && User.IsInRole("User"))
+            {
+                <div class="mb-3">
+                    <label for="Email" class="form-label">Heading</label>
+                    <input type="email" placeholder=" @User?.Identity?.Name" class="form-control" id="email" disabled readonly>
+                </div>
+            
+            }
+            <div class="mb-3">
+                <label for="FullName" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="FullName">
+            </div>
+            <div class="mb-3">
+                <label for="Age" class="form-label">Age</label>
+                <input type="text" class="form-control" id="Age">
+            </div>
+            <div class="mb-3">
+                <label for="Phone Number" class="form-label">Phone Number</label>
+                <input type="text"  class="form-control" id="PhoneNumber" >
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </div>
+
+        </form>
+    </div>
+</div>
